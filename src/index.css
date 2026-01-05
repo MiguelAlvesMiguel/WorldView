@@ -22,18 +22,18 @@ code {
     monospace;
 }
 
-/* NUCLEAR PADDING FIX - Force all buttons to have proper padding */
+/* Button padding - reasonable sizing */
 button {
-  padding: 14px 28px !important;
+  padding: 10px 20px !important;
   box-sizing: border-box !important;
 }
 
-/* Larger buttons with gaps get even more padding */
+/* Larger buttons with gaps get slightly more padding */
 button.gap-2,
 button.gap-3,
 button.gap-4,
 button.flex {
-  padding: 18px 36px !important;
+  padding: 12px 24px !important;
 }
 
 /* Ensure all containers are centered */

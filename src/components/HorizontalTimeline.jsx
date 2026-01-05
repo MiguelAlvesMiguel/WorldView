@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Compass, Scale, Shield, Heart, Sparkles, Users, BookOpen, Atom,
-  Dna, Cpu, Sword, Flag, Brain, Pill, Lightbulb, Check, Rainbow
+  Dna, Cpu, Sword, Flag, Brain, Pill, Lightbulb, Check, Rainbow, Globe
 } from 'lucide-react';
 import { SECTIONS, QUESTIONS } from '../data/questionnaire';
 
@@ -22,6 +22,7 @@ const sectionIcons = {
   'ai-tech': Cpu,
   'force-legitimacy': Sword,
   'identity': Flag,
+  'globalism': Globe,
   'personality': Brain
 };
 
@@ -72,7 +73,7 @@ const HorizontalTimeline = ({ currentIndex, responses, onJumpToQuestion }) => {
     <div className="w-full bg-slate-900/80 backdrop-blur-md border-b-2 border-slate-700/50">
       <div 
         ref={scrollRef}
-        className="flex items-start gap-6 px-8 py-6 overflow-x-auto"
+        className="flex items-center gap-3 px-4 py-4 overflow-x-auto"
         style={{ scrollbarWidth: 'thin', scrollbarColor: '#4f46e5 #1e293b' }}
       >
         {sectionsWithProgress.map((section, index) => {
@@ -83,8 +84,7 @@ const HorizontalTimeline = ({ currentIndex, responses, onJumpToQuestion }) => {
               <motion.button
                 ref={section.isActive ? activeRef : null}
                 onClick={() => onJumpToQuestion(section.firstQuestionIndex)}
-                className={`
-                  relative flex flex-col items-center gap-3 px-8 py-6 rounded-3xl transition-all whitespace-nowrap min-w-[140px]
+                className={`relative flex flex-col items-center gap-2 px-4 py-3 rounded-xl transition-all min-w-[100px] whitespace-nowrap min-w-[140px]
                   ${section.isActive 
                     ? 'bg-indigo-500/30 border-2 border-indigo-500/60 text-white shadow-lg' 
                     : section.isComplete
@@ -95,8 +95,7 @@ const HorizontalTimeline = ({ currentIndex, responses, onJumpToQuestion }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className={`
-                  w-16 h-16 rounded-2xl flex items-center justify-center
+                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center
                   ${section.isActive 
                     ? 'bg-indigo-500/40' 
                     : section.isComplete
@@ -105,13 +104,13 @@ const HorizontalTimeline = ({ currentIndex, responses, onJumpToQuestion }) => {
                   }
                 `}>
                   {section.isComplete ? (
-                    <Check size={28} className="text-green-400" strokeWidth={3} />
+                    <Check size={20} className="text-green-400" strokeWidth={3} />
                   ) : (
-                    <Icon size={28} />
+                    <Icon size={20} />
                   )}
                 </div>
                 
-                <span className="text-sm font-bold text-center max-w-[140px] leading-tight">
+                <span className={`text-[10px] font-bold text-center transition-all max-w-[90px] leading-tight`}>
                   {section.title}
                 </span>
                 

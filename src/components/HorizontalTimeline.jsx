@@ -110,7 +110,7 @@ const HorizontalTimeline = ({ currentIndex, responses, onJumpToQuestion }) => {
                   )}
                 </div>
                 
-                <span className={`text-[9px] font-bold text-center transition-all leading-tight truncate w-full px-1`}>
+                <span className={`text-[9px] font-bold text-center transition-all leading-tight w-full px-1 line-clamp-2`}>
                   {section.title}
                 </span>
                 

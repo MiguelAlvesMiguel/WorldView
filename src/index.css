@@ -44,3 +44,14 @@ button.flex {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+/* Force grid layout in results */
+.results-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1rem !important;
+}
+
+.results-grid > * {
+  grid-column: span 1 !important;
+}

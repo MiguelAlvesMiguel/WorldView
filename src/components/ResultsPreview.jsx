@@ -162,42 +162,48 @@ const ResultsPreview = ({ responses }) => {
               </div>
             </div>
 
-            <div className="p-6 space-y-6">
+            <div className="p-6 space-y-8">
               {allResults.map((section, idx) => (
                 <div key={idx} className="bg-slate-800/50 rounded-2xl p-6 border-2 border-slate-700/50">
                   <h3 className="text-2xl font-black text-white mb-1">{section.sectionTitle}</h3>
-                  <p className="text-xs text-slate-400 mb-4">{section.sectionDescription}</p>
+                  <p className="text-xs text-slate-400 mb-6">{section.sectionDescription}</p>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-4">
                     {section.questions.map((question, qIdx) => (
-                      <div key={qIdx} className={`rounded-xl p-4 border-2 ${
+                      <div key={qIdx} className={`flex gap-4 p-4 rounded-xl border-2 ${
                         question.answered 
                           ? 'bg-slate-900/50 border-slate-700/30' 
                           : 'bg-slate-900/20 border-slate-700/20 opacity-60'
                       }`}>
-                        <h4 className={`text-sm font-bold mb-2 ${
-                          question.answered ? 'text-indigo-300' : 'text-slate-500'
-                        }`}>{question.questionText}</h4>
+                        {/* Left: Question */}
+                        <div className="flex-shrink-0 w-1/3 pr-4 border-r border-slate-700/50">
+                          <h4 className={`text-sm font-bold leading-snug ${
+                            question.answered ? 'text-indigo-300' : 'text-slate-500'
+                          }`}>{question.questionText}</h4>
+                        </div>
                         
-                        {!question.answered ? (
-                          <p className="text-xs text-slate-600 italic">Not answered</p>
-                        ) : (
-                          <div className="space-y-2">
-                            {question.selections.map((selection, sIdx) => (
-                              <div key={sIdx} className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/20">
-                                <div className="flex items-start justify-between gap-2 mb-1">
-                                  <span className="text-xs font-semibold text-white">{selection.text}</span>
-                                  {!selection.isUnsure && (
-                                    <span className={`text-[10px] font-black uppercase whitespace-nowrap ${getStrengthColor(selection.strength)}`}>
-                                      {getStrengthLabel(selection.strength)}
-                                    </span>
-                                  )}
+                        {/* Right: Answers */}
+                        <div className="flex-1">
+                          {!question.answered ? (
+                            <p className="text-xs text-slate-600 italic">Not answered</p>
+                          ) : (
+                            <div className="space-y-2">
+                              {question.selections.map((selection, sIdx) => (
+                                <div key={sIdx} className="bg-slate-800/40 rounded-lg p-3 border border-slate-700/30">
+                                  <div className="flex items-start justify-between gap-2 mb-1">
+                                    <span className="text-xs font-bold text-white">{selection.text}</span>
+                                    {!selection.isUnsure && (
+                                      <span className={`text-[10px] font-black uppercase whitespace-nowrap ${getStrengthColor(selection.strength)}`}>
+                                        {getStrengthLabel(selection.strength)}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-[11px] text-slate-400 leading-tight">{selection.description}</p>
                                 </div>
-                                <p className="text-[11px] text-slate-400 leading-tight">{selection.description}</p>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     ))}
                   </div>

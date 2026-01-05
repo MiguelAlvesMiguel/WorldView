@@ -28,56 +28,34 @@ const sectionIcons = {
 const SectionTransition = ({ section, onContinue }) => {
   const IconComponent = sectionIcons[section.id] || Brain;
 
-  // Auto-continue after 800ms - much faster
+  // Auto-continue after 1 second
   useEffect(() => {
     const timer = setTimeout(() => {
       onContinue();
-    }, 800);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [onContinue]);
 
   return (
-    <motion.div
-      initial={{ x: -20, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 20, opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="mb-8 px-4 py-6 bg-gradient-to-r from-indigo-900/40 to-purple-900/40 rounded-2xl border-2 border-indigo-500/30"
-    >
-      <motion.div
-        initial={{ y: 50 }}
-        animate={{ y: 0 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="text-center"
-      >
+    <div className="mb-6 px-6 py-4 bg-gradient-to-r from-indigo-900/30 to-purple-900/30 rounded-xl border border-indigo-500/20 flex items-center gap-4">
+      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 p-1 flex-shrink-0">
+        <div className="w-full h-full rounded-lg bg-slate-900 flex items-center justify-center">
+          <IconComponent className="w-6 h-6 text-indigo-400" />
+        </div>
+      </div>
+      <div className="flex-1">
+        <h2 className="text-xl font-bold text-white">{section.title}</h2>
+        <p className="text-xs text-slate-400">{section.description}</p>
+      </div>
+      <div className="w-24 h-1 bg-slate-700 rounded-full overflow-hidden">
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1, rotate: 360 }}
-          transition={{ type: 'spring', stiffness: 200, duration: 0.5 }}
-          className="w-32 h-32 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-2 shadow-2xl"
-        >
-          <div className="w-full h-full rounded-2xl bg-slate-900 flex items-center justify-center">
-            <IconComponent className="w-16 h-16 text-indigo-400" />
-          </div>
-        </motion.div>
-
-        <motion.h2
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-5xl font-black text-white mb-3"
-        >
-          {section.title}
-        </motion.h2>
-
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, ease: 'linear' }}
-          className="w-64 h-1 mx-auto bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+          className="h-full bg-gradient-to-r from-indigo-500 to-purple-500"
+          initial={{ width: 0 }}
+          animate={{ width: '100%' }}
+          transition={{ duration: 1, ease: 'linear' }}
         />
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

@@ -213,15 +213,7 @@ function App() {
             />
           )}
 
-          {screen === SCREENS.QUESTION && showSectionIntro && currentSection && (
-            <SectionTransition
-              key={`section-${currentSection.id}`}
-              section={currentSection}
-              onContinue={handleSectionContinue}
-            />
-          )}
-
-          {screen === SCREENS.QUESTION && !showSectionIntro && (
+          {screen === SCREENS.QUESTION && (
             <>
               {/* Horizontal Timeline */}
               <div className="fixed top-0 left-0 right-0 z-40">
@@ -258,7 +250,16 @@ function App() {
                 <ResultsPreview responses={responses} />
               </div>
               
-              <div className="pt-8 pb-48 px-8 sm:px-12 lg:px-16">
+              <div className="pt-8 pb-12 px-8 sm:px-12 lg:px-16">
+                {/* Inline section transition */}
+                {showSectionIntro && currentSection && (
+                  <SectionTransition
+                    key={`section-${currentSection.id}`}
+                    section={currentSection}
+                    onContinue={handleSectionContinue}
+                  />
+                )}
+                
                 <QuestionCard
                   key={currentQuestion.id}
                   question={currentQuestion}
@@ -271,15 +272,10 @@ function App() {
                 />
               </div>
 
-              <NavigationButtons
-                currentIndex={currentQuestionIndex}
-                totalQuestions={QUESTIONS.length}
-                onPrevious={handlePrevious}
-                onNext={handleNext}
-                onFinish={handleFinish}
-                currentQuestion={currentQuestion}
-                questions={QUESTIONS}
-              />
+              {/* Keyboard navigation hint */}
+              <div className="fixed bottom-4 right-4 z-30 bg-slate-800/90 backdrop-blur-sm border-2 border-slate-700/50 rounded-xl px-4 py-2 text-xs text-slate-400">
+                <span className="font-semibold text-slate-300">Navigate:</span> Arrow Keys or Timeline
+              </div>
             </>
           )}
 

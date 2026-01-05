@@ -70,7 +70,7 @@ const ScoreExport = ({ responses }) => {
     <>
       <button
         onClick={() => setShowModal(true)}
-        className="fixed top-20 right-6 z-40 flex items-center gap-2 px-6 py-3 rounded-2xl bg-indigo-500/20 hover:bg-indigo-500/30 border-2 border-indigo-500/40 text-indigo-300 font-bold text-sm transition-all"
+        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 border-2 border-indigo-500/40 text-indigo-300 font-semibold text-sm transition-all"
       >
         <BarChart3 size={20} />
         Score: {percentComplete}%

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Compass, Scale, Shield, Heart, Sparkles, Users, BookOpen, Atom,
-  Dna, Cpu, Sword, Flag, Brain, Pill, Lightbulb, Rainbow
+  Dna, Cpu, Sword, Flag, Brain, Pill, Lightbulb, Rainbow, Globe
 } from 'lucide-react';
 
 const sectionIcons = {
@@ -21,6 +21,7 @@ const sectionIcons = {
   'ai-tech': Cpu,
   'force-legitimacy': Sword,
   'identity': Flag,
+  'globalism': Globe,
   'personality': Brain
 };
 
@@ -37,11 +38,11 @@ const SectionTransition = ({ section, onContinue }) => {
 
   return (
     <motion.div
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 1.1, opacity: 0 }}
+      initial={{ x: -20, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: 20, opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 flex items-center justify-center z-50 bg-slate-900/90 backdrop-blur-xl"
+      className="mb-8 px-4 py-6 bg-gradient-to-r from-indigo-900/40 to-purple-900/40 rounded-2xl border-2 border-indigo-500/30"
     >
       <motion.div
         initial={{ y: 50 }}

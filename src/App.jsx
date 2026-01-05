@@ -252,13 +252,13 @@ function App() {
                 </div>
               </div>
 
-              {/* Score/Export Button */}
-              <ScoreExport responses={responses} />
+              {/* Buttons below timeline */}
+              <div className="flex items-center gap-3 px-4 py-3 bg-slate-900/60 border-b border-slate-700/30">
+                <ScoreExport responses={responses} />
+                <ResultsPreview responses={responses} />
+              </div>
               
-              {/* Results Preview Button */}
-              <ResultsPreview responses={responses} />
-              
-              <div className="pt-56 pb-48 px-8 sm:px-12 lg:px-16">
+              <div className="pt-8 pb-48 px-8 sm:px-12 lg:px-16">
                 <QuestionCard
                   key={currentQuestion.id}
                   question={currentQuestion}
@@ -277,6 +277,8 @@ function App() {
                 onPrevious={handlePrevious}
                 onNext={handleNext}
                 onFinish={handleFinish}
+                currentQuestion={currentQuestion}
+                questions={QUESTIONS}
               />
             </>
           )}

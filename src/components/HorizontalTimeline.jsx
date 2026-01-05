@@ -84,7 +84,7 @@ const HorizontalTimeline = ({ currentIndex, responses, onJumpToQuestion }) => {
               <motion.button
                 ref={section.isActive ? activeRef : null}
                 onClick={() => onJumpToQuestion(section.firstQuestionIndex)}
-                className={`relative flex flex-col items-center gap-2 px-4 py-3 rounded-xl transition-all min-w-[100px] whitespace-nowrap min-w-[140px]
+                className={`relative flex flex-col items-center gap-2 px-3 py-2 rounded-xl transition-all w-[110px] flex-shrink-0
                   ${section.isActive 
                     ? 'bg-indigo-500/30 border-2 border-indigo-500/60 text-white shadow-lg' 
                     : section.isComplete
@@ -95,7 +95,7 @@ const HorizontalTimeline = ({ currentIndex, responses, onJumpToQuestion }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center
+                <div className={`w-8 h-8 rounded-xl flex items-center justify-center
                   ${section.isActive 
                     ? 'bg-indigo-500/40' 
                     : section.isComplete
@@ -104,22 +104,20 @@ const HorizontalTimeline = ({ currentIndex, responses, onJumpToQuestion }) => {
                   }
                 `}>
                   {section.isComplete ? (
-                    <Check size={20} className="text-green-400" strokeWidth={3} />
+                    <Check size={16} className="text-green-400" strokeWidth={3} />
                   ) : (
-                    <Icon size={20} />
+                    <Icon size={16} />
                   )}
                 </div>
                 
-                <span className={`text-[10px] font-bold text-center transition-all max-w-[90px] leading-tight`}>
+                <span className={`text-[9px] font-bold text-center transition-all leading-tight truncate w-full px-1`}>
                   {section.title}
                 </span>
                 
-                {/* Progress indicator */}
-                {!section.isComplete && section.answeredCount > 0 && (
-                  <span className="text-xs text-slate-400 font-medium">
-                    {section.answeredCount}/{section.questionCount}
-                  </span>
-                )}
+                {/* Progress indicator - always show */}
+                <span className="text-[10px] text-slate-400 font-semibold">
+                  {section.answeredCount}/{section.questionCount}
+                </span>
                 
                 {/* Progress bar under button */}
                 <div className="absolute bottom-0 left-2 right-2 h-1 bg-slate-700/50 rounded-full overflow-hidden">

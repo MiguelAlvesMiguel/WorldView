@@ -56,6 +56,20 @@ export const QUESTIONS = [
       { id: 'q2_unsure', text: 'Not sure / mixed', description: 'Human nature is too complex or contested to reduce to simple claims.', isUnsure: true }
     ]
   },
+  {
+    id: 35,
+    sectionId: 'human-nature',
+    text: 'Human beings are fundamentally:',
+    multiSelect: true,
+    options: [
+      { id: 'q35_good', text: 'Good by nature', description: 'People are born善良 and corrupted by bad systems or circumstances. Remove oppression and humans flourish.' },
+      { id: 'q35_blank', text: 'Blank slates', description: 'Humans have no inherent nature. We are entirely products of our environment and experiences.' },
+      { id: 'q35_complex', text: 'Complex and variable', description: 'Human nature includes diverse potentials. Different people develop differently based on genetics and environment.' },
+      { id: 'q35_flawed', text: 'Flawed but redeemable', description: 'Humans have innate weaknesses and vices but can overcome them through effort, culture, or grace.' },
+      { id: 'q35_fallen', text: 'Fallen or corrupt', description: 'Human nature is fundamentally broken. Without external constraints, humans tend toward vice and chaos.' },
+      { id: 'q35_unsure', text: 'Not sure / mixed', description: 'The fundamental nature of humanity is contested and unclear.', isUnsure: true }
+    ]
+  },
 
   // SECTION III: POWER, STATE & AUTHORITY
   {
